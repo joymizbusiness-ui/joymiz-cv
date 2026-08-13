@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact - Joymiz CV</title>
+  <meta name="description" content="Get in touch with the Joymiz CV team.">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav">
+      <a href="/" class="logo">Joymiz <span>CV</span></a>
+      <ul class="nav-links">
+        <li><a href="/">Builder</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="help.html">Help</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <div class="page-content">
+      <h1>Contact Us</h1>
+      <p>Have a question, suggestion, or found a bug? We'd love to hear from you.</p>
+
+      <form class="contact-form" id="contactForm" onsubmit="handleSubmit(event)">
+        <div class="form-group">
+          <label for="contactName">Name *</label>
+          <input type="text" id="contactName" placeholder="Your name" required>
+        </div>
+        <div class="form-group">
+          <label for="contactEmail">Email *</label>
+          <input type="email" id="contactEmail" placeholder="you@example.com" required>
+        </div>
+        <div class="form-group">
+          <label for="contactSubject">Subject *</label>
+          <input type="text" id="contactSubject" placeholder="How can we help?" required>
+        </div>
+        <div class="form-group">
+          <label for="contactMessage">Message *</label>
+          <textarea id="contactMessage" rows="5" placeholder="Tell us what's on your mind..." required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width: 100%; padding: 0.8rem;">Send Message</button>
+        <p id="formNote" style="text-align: center; margin-top: 1rem; color: var(--joymiz-muted); font-size: 0.9rem; display: none;"></p>
+      </form>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div class="footer-brand">
+        <p><strong>Joymiz</strong> - Free tools for everyone.</p>
+      </div>
+      <div class="footer-links">
+        <a href="about.html">About</a>
+        <a href="help.html">Help</a>
+        <a href="contact.html">Contact</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function handleSubmit(e) {
+      e.preventDefault();
+      var note = document.getElementById('formNote');
+      var btn = e.target.querySelector('button[type="submit"]');
+      btn.disabled = true;
+      btn.textContent = 'Sending...';
+
+      // Since there's no backend, we simulate a response
+      setTimeout(function() {
+        note.textContent = 'Thank you! Your message has been noted. Since Joymiz CV is a client-side application without a backend, we recommend emailing us directly at support@joymiz.com for a faster response.';
+        note.style.display = 'block';
+        note.style.color = 'var(--joymiz-success)';
+        btn.textContent = 'Message Sent';
+        e.target.reset();
+        setTimeout(function() {
+          btn.disabled = false;
+          btn.textContent = 'Send Message';
+        }, 3000);
+      }, 1000);
+    }
+  </script>
+</body>
+</html>
